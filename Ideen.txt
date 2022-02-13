@@ -1,0 +1,29 @@
+class MyWindow of MainWindow:
+
+    children:
+        Sliders[] = sliders[6];
+        viewWindow
+        leiste
+        Buttons:
+            loadImages
+            saveAnalysis
+
+
+class LoadButton of Buttons:
+
+    def loadFile():
+        files = searchfiles();
+        images = []
+        for file in files:
+            images.append(cv2.imread("file"))
+
+class viewWindow of Windows:
+
+    image = 0
+    preview = 0
+    
+    def setImage():
+
+    def setPreview():
+
+    def display():
