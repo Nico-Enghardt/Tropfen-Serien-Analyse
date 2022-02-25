@@ -8,15 +8,6 @@ class MyWindow of MainWindow:
             loadImages
             saveAnalysis
 
-
-class LoadButton of Buttons:
-
-    def loadFile():
-        files = searchfiles();
-        images = []
-        for file in files:
-            images.append(cv2.imread("file"))
-
 class viewWindow of Windows:
 
     image = 0
