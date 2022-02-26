@@ -1,29 +1,14 @@
 from PyQt6 import QtWidgets, QtGui, uic
-from PyQt6.QtCore import QThread, QObject, Qt, pyqtSignal,QCoreApplication
-from PyQt6.QtGui import QAction, QPixmap
-import sys
-import os
-import time
-import cv2
+from PyQt6.QtCore import QThreadPool, QObject, Qt, pyqtSignal,QCoreApplication
+from PyQt6.QtGui import QAction, QPixmap, QPainter, QPen
+import sys, os, time, cv2
 from files import *
 
 from findBubbles import *
 from pictureClasses import *
+from timeline import Timeline
 
 basedir = os.path.dirname(__file__)
-
-class Worker(QObject):
-    finished = pyqtSignal()
-    progress = pyqtSignal(int)
-
-    def run(self):
-        for i in range(20):
-            time.sleep(1)
-            self.progress.emit(i+1)
-            print(i)
-        self.finished.emit()
-        print("Done")
-
 
 class Wrapper(QtWidgets.QMainWindow):
     def __init__(self):
@@ -54,7 +39,7 @@ class Wrapper(QtWidgets.QMainWindow):
 
         self.backwardsButton.clicked.connect(self.decrease)
         self.forwardsButton.clicked.connect(self.increase)
-        self.playButton.clicked.connect(self.play)
+        self.playButton.clicked.connect(self.playPause)
 
         forwardsIcon = QtGui.QIcon("Icons/forwards.png")
         backwardsIcon = QtGui.QIcon("Icons/backwards.png")
@@ -64,6 +49,8 @@ class Wrapper(QtWidgets.QMainWindow):
         self.forwardsButton.setIcon(forwardsIcon)
         self.backwardsButton.setIcon(backwardsIcon)
         self.playButton.setIcon(self.playIcon)
+        
+        self.playing = False
 
         # Load Menu bar
         self.QAction_load = QAction("Load Series")
@@ -78,25 +65,30 @@ class Wrapper(QtWidgets.QMainWindow):
         self.menubar.addAction(self.QAction_render)
         self.menubar.addAction(self.QAction_save)
 
+        # Load timeline
+        
+        self.timeline = Timeline(self)
+        self.timelineContainer.addWidget(self.timeline)
+
         # Threading
-        self.thread1 = QThread()
+        self.threadPool = QThreadPool()
+        print("Multithreading with maximum %d threads" % self.threadPool.maxThreadCount())
 
         self.show()
+
+    def resizeEvent(self,e):
+        self.reloadImage()
 
     def loadSeries(self):
 
         #fileNames, filter = QtWidgets.QFileDialog.getOpenFileNames(
         #    directory="/media/nico/Elements/WJ-Experimente Fotos/Beleuchtet/TiO2-behandelt/Kondensieren/Versuch-2/")
         
-        #print(fileNames)
-
-        self.Pictures = Pictures()
-        self.Pictures.moveToThread(self.thread1)
-        self.thread1.started.connect(
-            lambda: self.Pictures.loadNBlur(self, filesToBeLoaded10P))
-        self.thread1.start()
+        fileNames = filesToBeLoaded10P
         
-        print("Done with loading ;=) ")
+        self.Pictures = Pictures()
+        self.threadPool.start(lambda: self.Pictures.loadNBlur(self,fileNames))
+        #self.Pictures.loadNBlur(self,fileNames)
         
         self.refreshButtonStates()
 
@@ -104,8 +96,6 @@ class Wrapper(QtWidgets.QMainWindow):
     
         cv2Picture, blurredPicture = self.Pictures.getImage(int(self.count))
         bildAnalyse = findBubbles(cv2Picture, self.parameters,denoised=blurredPicture)
-
-
 
         # Analysenstatistik
         n, areas, R = self.Pictures.getAnalysis(bildAnalyse,self.kontaktWinkelBox.value)
@@ -127,11 +117,10 @@ class Wrapper(QtWidgets.QMainWindow):
                     bytesPerLine, QtGui.QImage.Format.Format_BGR888)
 
         qPixmap = QtGui.QPixmap(qPicture)
-        qPixmap = qPixmap.scaled(600,450,Qt.AspectRatioMode.KeepAspectRatio)
+        qPixmap = qPixmap.scaled(self.firstLabelGoodMorning.size(),Qt.AspectRatioMode.KeepAspectRatio)
 
         self.firstLabelGoodMorning.setPixmap(qPixmap)
         
-
     def refreshButtonStates(self):
         self.playButton.setEnabled(True)
         self.forwardsButton.setEnabled(True)
@@ -154,9 +143,16 @@ class Wrapper(QtWidgets.QMainWindow):
         self.refreshButtonStates()
         self.reloadImage()
 
-    def play(self):
-        self.playButton.setIcon(self.pauseIcon)
-        print("Playing …")
+    def playPause(self):
+        if self.playing:
+            self.playButton.setIcon(self.playIcon)
+            self.playing = False
+            print("Paused …")
+        else:
+            self.playButton.setIcon(self.pauseIcon)
+            self.playing = True
+            self.threadPool.start(lambda: self.Pictures.play(self))
+            print("Playing …")
 
     def changeLight(self, value):
         self.parameters['upper_limit'] = value
@@ -188,20 +184,12 @@ class Wrapper(QtWidgets.QMainWindow):
     def renderMovie(self):
         print("Executing renderMovie()…")
 
-    def long_task(self):
-        self.thread1 = QThread()
-        self.worker1 = Worker()
-
-        self.worker1.moveToThread(self.thread1)
-        self.thread1.started.connect(self.worker1.run)
-        self.worker1.finished.connect(self.thread1.quit)
-        self.worker1.finished.connect(self.worker1.deleteLater)
-        self.thread1.finished.connect(self.thread1.deleteLater)
-
-        self.thread1.start()
-
+    def keyPressEvent(self,e):
+        if e.key() == Qt.Key.Key_Escape.value:
+            self.close()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     main = Wrapper()
+
     app.exec()

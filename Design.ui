@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1096</width>
-    <height>731</height>
+    <width>1142</width>
+    <height>795</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -46,7 +46,7 @@ font: 57 10pt &quot;NotoSerifTamilSlanted Medium&quot;;</string>
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <layout class="QGridLayout" name="gridLayout_2" rowstretch="10,1" columnstretch="4,0,0,0,1">
+   <layout class="QGridLayout" name="gridLayout_2" rowstretch="10,0" columnstretch="4,0,0,0,0">
     <property name="leftMargin">
      <number>15</number>
     </property>
@@ -62,219 +62,6 @@ font: 57 10pt &quot;NotoSerifTamilSlanted Medium&quot;;</string>
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="0" column="0" colspan="2">
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="leftMargin">
-       <number>6</number>
-      </property>
-      <property name="topMargin">
-       <number>6</number>
-      </property>
-      <property name="rightMargin">
-       <number>6</number>
-      </property>
-      <property name="bottomMargin">
-       <number>6</number>
-      </property>
-      <property name="spacing">
-       <number>6</number>
-      </property>
-      <item row="1" column="1" colspan="6">
-       <widget class="QLabel" name="firstLabelGoodMorning">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>1</width>
-          <height>1</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>NotoSerifTamilSlanted Medium</family>
-          <pointsize>10</pointsize>
-          <weight>7</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border: 2px solid;</string>
-        </property>
-        <property name="text">
-         <string>Laden Sie über den Knopf oben
- eine Serie von Bildern zur Analyse.</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QPushButton" name="playButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>55</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>55</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="resources.qrc">
-          <normaloff>:/Icons/Icons/play.png</normaloff>:/Icons/Icons/play.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>21</width>
-          <height>16</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="6">
-       <widget class="QLabel" name="statistics">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Statistics…</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="forwardsButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="resources.qrc">
-          <normaloff>:/Icons/Icons/forwards.png</normaloff>:/Icons/Icons/forwards.png</iconset>
-        </property>
-        <property name="checkable">
-         <bool>false</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="backwardsButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="resources.qrc">
-          <normaloff>:/Icons/Icons/backwards.png</normaloff>:/Icons/Icons/backwards.png</iconset>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="6">
-       <widget class="QSlider" name="revealSlider">
-        <property name="maximum">
-         <number>101</number>
-        </property>
-        <property name="singleStep">
-         <number>1</number>
-        </property>
-        <property name="value">
-         <number>50</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="4">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="3">
-     <layout class="QVBoxLayout" name="verticalLayout_2"/>
-    </item>
     <item row="0" column="4">
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="leftMargin">
@@ -589,8 +376,11 @@ font-size: 15pt;</string>
       </item>
      </layout>
     </item>
+    <item row="0" column="3">
+     <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    </item>
     <item row="1" column="0" colspan="5">
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="timelineContainer">
       <property name="leftMargin">
        <number>6</number>
       </property>
@@ -603,17 +393,68 @@ font-size: 15pt;</string>
       <property name="bottomMargin">
        <number>6</number>
       </property>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
+     </layout>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>6</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item row="2" column="4">
+       <widget class="QPushButton" name="playButton">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
+          <width>55</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>55</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Icons/play.png</normaloff>:/Icons/Icons/play.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>21</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QLabel" name="statistics">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
           <height>0</height>
          </size>
         </property>
@@ -621,7 +462,144 @@ font-size: 15pt;</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Statistics…</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QPushButton" name="forwardsButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Icons/forwards.png</normaloff>:/Icons/Icons/forwards.png</iconset>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="7">
+       <widget class="QSlider" name="revealSlider">
+        <property name="maximum">
+         <number>101</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="7">
+       <widget class="QLabel" name="firstLabelGoodMorning">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>NotoSerifTamilSlanted Medium</family>
+          <pointsize>10</pointsize>
+          <weight>7</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid;</string>
+        </property>
+        <property name="text">
+         <string>Laden Sie über den Knopf oben
+ eine Serie von Bildern zur Analyse.</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="backwardsButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Icons/backwards.png</normaloff>:/Icons/Icons/backwards.png</iconset>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -634,7 +612,7 @@ font-size: 15pt;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1096</width>
+     <width>1142</width>
      <height>33</height>
     </rect>
    </property>

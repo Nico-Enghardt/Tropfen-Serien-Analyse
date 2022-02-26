@@ -3,7 +3,6 @@ import numpy as np
 #from parameters import parameters
 #from segmentation import *
 
-denoised = []
 def deleteDenoised():
     global denoised
     denoised = []
@@ -43,9 +42,8 @@ def fillGaps(binary, strength):
     return cv2.morphologyEx(binary, cv2.MORPH_CLOSE, np.ones((strength, strength),dtype=np.uint8))
 
 def getDenoised(raw,blurvalue):
-    global denoised
-    if denoised == []:
-        denoised =  cv2.fastNlMeansDenoising(raw, 6, blurvalue, 15)
+
+    denoised =  cv2.fastNlMeansDenoising(raw, 6, blurvalue, 15)
     return denoised
 
 def balanceLight(input):
