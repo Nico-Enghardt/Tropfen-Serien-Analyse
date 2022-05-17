@@ -1,57 +1,80 @@
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtChart import QChart, QChartView, QBarSet, \
+    QPercentBarSeries, QBarCategoryAxis
 import sys
-from PyQt6.QtWidgets import QWidget, QApplication
-from PyQt6.QtGui import QPainter, QColor, QFont
-from PyQt6.QtCore import Qt
-import random
-
-
-class Example(QWidget):
-
+from PyQt5.QtGui import QIcon
+ 
+ 
+ 
+class Window(QWidget):
     def __init__(self):
         super().__init__()
-
-        self.text = "Лев Николаевич Толстой\nАнна Каренина"
-
-        self.setMinimumSize(50, 50)
-        self.setGeometry(300, 300, 350, 300)
-        self.setWindowTitle('Points')
-        self.show()
-    
-    def paintEvent(self, event):
-
-        qp = QPainter()
-        qp.begin(self)
-        self.drawMyStuff(qp)
-        qp.end()
-
-    def drawMyStuff(self,qp):
-        qp.setPen(QColor(255,200,255))
-        qp.fillRect(20,50,100,200,QColor(255,200,255))
-
-    def drawText(self, event, qp):
-
-        qp.setPen(QColor(168, 168, 200))
-        qp.setFont(QFont('Decorative', 10))
-        qp.drawText(event.rect(), Qt.AlignmentFlag.AlignCenter, self.text)
-
-    def drawPoints(self, qp):
-    
-        qp.setPen(Qt.GlobalColor.red)
-        size = self.size()
-
-        for i in range(100000):
-
-            x = random.randint(1, size.width() - 1)
-            y = random.randint(1, size.height() - 1)
-            qp.drawPoint(x, y)
-
-
-def main():
-
-    app = QApplication(sys.argv)
-    ex = Example()
-    sys.exit(app.exec())
-
-
-if __name__ == '__main__':
-    main()
+ 
+ 
+        #window requirements
+        self.setGeometry(200,200,600,400)
+        self.setWindowTitle("Creating Barchart")
+        self.setWindowIcon(QIcon("python.png"))
+ 
+        #change the color of the window
+        self.setStyleSheet('background-color:green')
+ 
+        #create barseries
+        set0 = QBarSet("Parwiz")
+        set1 = QBarSet("Karim")
+        set2 = QBarSet("Tom")
+        set3 = QBarSet("Logan")
+        set4 = QBarSet("Bob")
+ 
+ 
+        #insert data to the barseries
+        set0 << 1 << 2 << 3 << 4 << 5 << 6
+        set1 << 5 << 0 << 0 << 4 << 0 << 7
+        set2 << 3 << 5 << 8 << 13 << 8 << 5
+        set3 << 5 << 6 << 7 << 3 << 4 << 5
+        set4 << 9 << 7 << 5 << 3 << 1 << 2
+ 
+        #we want to create percent bar series
+        series = QPercentBarSeries()
+        series.append(set0)
+        series.append(set1)
+        series.append(set2)
+        series.append(set3)
+        series.append(set4)
+ 
+        #create chart and add the series in the chart
+        chart = QChart()
+        chart.addSeries(series)
+        chart.setTitle("Barchart Percent Example")
+        chart.setAnimationOptions(QChart.SeriesAnimations)
+        chart.setTheme(QChart.ChartThemeDark)
+ 
+ 
+        #create axis for the chart
+        categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+ 
+        axis = QBarCategoryAxis()
+        axis.append(categories)
+        chart.createDefaultAxes()
+        chart.setAxisX(axis, series)
+ 
+        #create chartview and add the chart in the chartview
+        chartview = QChartView(chart)
+ 
+        vbox = QVBoxLayout()
+        vbox.addWidget(chartview)
+ 
+        self.setLayout(vbox)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+App = QApplication(sys.argv)
+window = Window()
+window.show()
+sys.exit(App.exec())

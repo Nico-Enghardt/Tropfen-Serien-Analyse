@@ -1,6 +1,8 @@
 
 Linux:
-pyinstaller  -w --add-data="Design.ui:." --add-data="Icons:." app.py
+pyinstaller  -w --add-data="Design.ui:." --add-data="Icons:." --add-data="Icon.ico:." app.py
+
+pyinstaller app.spec
 
 Windows:
-pyinstaller  -w --add-data="Design.ui:." --add-data="Icons:." app.py
+pyinstaller  -w --add-data="Design.ui:." --add-data="Icons:." --add-data="Icon.ico:." app.py

@@ -1,11 +1,6 @@
 import cv2
 import numpy as np
-#from parameters import parameters
-#from segmentation import *
-
-def deleteDenoised():
-    global denoised
-    denoised = []
+#from findParameters import parameters
 
 def extractLights(image, limit, glow):
     red, white_dots = cv2.threshold(image, limit, 255, cv2.THRESH_BINARY)
@@ -18,7 +13,6 @@ def extractDarks(image, limit):
         image, limit, 255, cv2.THRESH_BINARY)
 
     black_bubbles = cv2.bitwise_not(not_black_bubbles)
-    #black_bubbles = cv2.cvtColor(black_bubbles,cv2.COLOR_BGR2GRAY)
     return black_bubbles
 
 def fillHoles(binary):
@@ -67,8 +61,7 @@ def findBubbles(input, params,denoised=[]):
         denoised = getDenoised(input,40)
 
     lights = extractLights(input, params['upper_limit'], params['glow'])
-
-
+    
     # Auto-Detect dark parameter --------------------------
     darks = extractDarks(denoised, params['lower_limit'])
 
@@ -79,4 +72,4 @@ def findBubbles(input, params,denoised=[]):
 
     #mix = fillHoles(mix)
 
-    return mix # Will be more colourful after segmentation
+    return mix
