@@ -15,7 +15,8 @@ class Picture():
         self.picture = cv2.imread(fileName)[:,:,0]
         w,h = self.picture.shape[:2]
         if w > 2000 or h > 2000:
-            self.picture = cv2.resize(self.picture,(w/4,h/4))
+            print(h,w,h/4,w/4)
+            self.picture = cv2.resize(self.picture,(int(h/4),int(w/4)))
         #self.blurredPicture = None
         #self.balancedPicture = None
         self.Areas = None
