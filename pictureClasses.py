@@ -1,7 +1,6 @@
 from PyQt6.QtCore import QRunnable, pyqtSlot
 
 import cv2, time
-from tqdm import tqdm
 
 from findBubbles import *
 from findParameters import *
@@ -14,6 +13,9 @@ class Picture():
         
         self.fileName = fileName
         self.picture = cv2.imread(fileName)[:,:,0]
+        w,h,c = 
+        if w > 2000 or h > 2000:
+            self.picture = cv2.resize(self.picture,(w/4,h/4))
         #self.blurredPicture = None
         #self.balancedPicture = None
         self.Areas = None

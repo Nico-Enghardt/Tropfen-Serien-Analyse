@@ -1,9 +1,8 @@
 from PyQt6 import QtWidgets, QtGui, uic
-from PyQt6.QtCore import QThreadPool, QObject, Qt, pyqtSignal,QCoreApplication
-from PyQt6.QtGui import QAction, QPixmap, QPainter, QPen
-import sys, os, csv, path
+from PyQt6.QtCore import QThreadPool, Qt
+from PyQt6.QtGui import QAction
+import sys, os, csv
 
-from attr import has
 from files import *
 
 from findBubbles import *
@@ -24,7 +23,7 @@ class Wrapper(QtWidgets.QMainWindow):
 
         self.count = 0
         self.parameters = {'upper_limit': 200, 'lower_limit': 40,
-                           'blur': 40, 'glow': 3, 'siebsize': 10, 'gapsfill': 10}
+                           'blur': 10, 'glow': 3, 'siebsize': 10, 'gapsfill': 10}
         self.revealValue = 50
         self.useDarkAnalysis = False
         

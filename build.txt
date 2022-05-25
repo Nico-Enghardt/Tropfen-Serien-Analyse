@@ -5,4 +5,6 @@ pyinstaller  -w --add-data="Design.ui:." --add-data="Icons:." --add-data="Icon.i
 pyinstaller app.spec
 
 Windows:
-pyinstaller  -w --add-data="Design.ui:." --add-data="Icons:." --add-data="Icon.ico:." app.py
+pyinstaller  -w --add-data="Design.ui;." --add-data="Icons;./Icons/" --add-data="Icon.ico;." app.py
+
+pyinstaller  C:\Users\leopo\Documents\Tropfen-Serien-Analyse\Tropfen-Serien-Analyse-master\app.spec

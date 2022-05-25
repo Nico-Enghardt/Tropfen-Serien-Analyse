@@ -39,12 +39,12 @@ class Timeline(QWidget):
         balanceRatio = self.parent.getBalancedRatio()
         
            
-        qp.fillRect(0,5,self.size().width()*loadRatio,15,QtGui.QColor(219, 58, 46))
-        qp.fillRect(0,5,self.size().width()*blurRatio,15,QtGui.QColor(39, 161, 242))
-        qp.fillRect(0,5,self.size().width()*balanceRatio,15,QtGui.QColor(62, 235, 42))
+        qp.fillRect(0,5,int(self.size().width()*loadRatio),15,QtGui.QColor(219, 58, 46))
+        qp.fillRect(0,5,int(self.size().width()*blurRatio),15,QtGui.QColor(39, 161, 242))
+        qp.fillRect(0,5,int(self.size().width()*balanceRatio),15,QtGui.QColor(62, 235, 42))
         
         
-        xpos = self.size().width()*self.parent.getCountRatio()-2
+        xpos = int(self.size().width()*self.parent.getCountRatio())-2
         
         if blurRatio > 0:    
             qp.fillRect(xpos,0,4,25,QtGui.QColor(10,10,10))
