@@ -13,7 +13,7 @@ class Picture():
         
         self.fileName = fileName
         self.picture = cv2.imread(fileName)[:,:,0]
-        w,h,c = 
+        w,h = self.picture.shape[:2]
         if w > 2000 or h > 2000:
             self.picture = cv2.resize(self.picture,(w/4,h/4))
         #self.blurredPicture = None
