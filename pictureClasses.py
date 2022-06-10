@@ -47,7 +47,7 @@ class Pictures(QRunnable):
             if parent.isVisible():
                 
                 image.blurredPicture = getDenoised(image.picture,parent.parameters["blur"])
-                image.darkParameter,image.numberArray = findDark(image.blurredPicture)
+                image.darkParameter,image.numberArray = findDarkDerivative(image.blurredPicture)
                 
                 self.blurredNr += 1
                 

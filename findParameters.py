@@ -8,10 +8,6 @@ def findDark(gray):
     for ll in range(0,255):
         darkImg = extractDarks(gray,ll)
         numbers.append(information(darkImg)[0])
-        darkImg = cv2.resize(darkImg,(800,600));
-        #cv2.putText(darkImg,str(ll),(700,540),cv2.FONT_HERSHEY_COMPLEX,1.0,(255,184,79))
-        #cv2.putText(darkImg,str(ll),(700,560),cv2.FONT_HERSHEY_COMPLEX,1.0,(0,0,0))
-        #cv2.imwrite("./Fotos/AutoDark/"+str(ll)+".png",darkImg)
 
 
     for x in range(1,254):
@@ -24,3 +20,23 @@ def findDark(gray):
     if len(mins) == 0:
         return 0,numbers
     return mins[0],numbers
+
+def findDarkDerivative(gray):
+    
+    numbers = []
+    mins = []
+    for ll in range(0,255):
+        darkImg = extractDarks(gray,ll)
+        numbers.append(information(darkImg)[0])
+    
+    diffs = []
+    
+    for i in range(0,254):
+        diffs.append(range[i+1]-range[i])
+        print(diffs[-1])
+
+    min = np.min(diffs)
+    
+    perfectValue = diffs.index(min)
+
+    return perfectValue,numbers
